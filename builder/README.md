@@ -4,7 +4,7 @@ Separate the construction of a complex object from its representation, so that t
 
 The pattern suggests separating the code that creates and the code that uses the object.
 
-Method Chaining
+Method Chaining.
 
 ## Consequences
 
