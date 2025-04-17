@@ -3,7 +3,7 @@ interface User {
     age: number;
 };
 
-export class SingletonDatabase {
+class SingletonDatabase {
     private static _instance: SingletonDatabase | null = null;
     private users: User[] = []
 
