@@ -2,13 +2,17 @@ interface Prototype {
     clone(): Prototype;
 };
 
-class Address {
+class Address implements Prototype {
     public street: string;
     public number: number;
 
     constructor(_street: string, _number: number) {
         this.street = _street;
         this.number = _number;
+    }
+
+    clone(): Address {
+        return new Address(this.street, this.number);
     }
 };
 
@@ -22,8 +26,9 @@ class Person implements Prototype {
         this.age = _age;
     }
 
-    clone(): this {
-        const newObject = Object.create(this);
+    clone(): Person {
+        const newObject = new Person(this.name, this.age);
+        newObject.addresses = this.addresses.map((item) => item.clone());
 
         return newObject;
     }
@@ -45,3 +50,5 @@ person2.name = "Mark";
 console.log(person2);
 console.log(person2.name);
 console.log(person2.addresses);
+
+console.log(person1);
